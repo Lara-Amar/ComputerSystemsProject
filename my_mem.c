@@ -80,9 +80,8 @@ void push_free(header_t *header)
             push_free(merge_headers(header, other));
             return;
         }
-
-        other = other->next;
         prev = other;
+        other = other->next;
     }
 
     // if the header could't be merged, just add it to the list
@@ -158,7 +157,7 @@ void *my_malloc(unsigned size)
                 return tail + 1;
             }
         }
-
+        prev = header;
         header = header->next;
     }
 
